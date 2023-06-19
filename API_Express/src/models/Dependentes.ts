@@ -10,24 +10,23 @@ import {
   Unique,
   ForeignKey,
   BelongsTo,
-  HasOne,
-  HasMany,
 } from "sequelize-typescript";
+import { INTEGER } from "sequelize";
 import { Funcionarios } from "./Funcionarios";
-import { Projetos } from "./Projetos";
+
 @Table({
   timestamps: true,
 })
-export class Departamentos extends Model {
+export class Dependentes extends Model {
   @IsUUID("all")
   @PrimaryKey
   @Column({
-    type: DataType.UUID,
-    defaultValue: DataType.UUIDV1,
+    type: INTEGER,
+    autoIncrement: true,
   })
-  id!: string;
+  id!: number;
+
   @AllowNull(false)
-  @Unique
   @Column({
     type: DataType.STRING,
   })
@@ -35,18 +34,16 @@ export class Departamentos extends Model {
 
   @AllowNull(false)
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
   })
-  sigla!: string;
-  @ForeignKey(() => Funcionarios)
-  @AllowNull(true)
-  @Column({
-    type: DataType.UUID,
-  })
-  gestorId!: string;
+  idade!: number;
 
-  @HasOne(() => Funcionarios, "gestorId")
-  gestor!: Funcionarios;
-  @HasMany(() => Projetos)
-  projetos!: Projetos[];
+  @ForeignKey(() => Funcionarios)
+  @Column({
+    type: INTEGER,
+  })
+  funcionarioId!: number;
+
+  @BelongsTo(() => Funcionarios)
+  funcionario!: Funcionarios;
 }
