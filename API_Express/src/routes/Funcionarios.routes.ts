@@ -7,7 +7,8 @@ funcionariosRouter.get(
   "/funcionarios",
   async (req: Request, res: Response): Promise<Response> => {
     const funcionarios: Funcionarios[] = await Funcionarios.findAll();
-    return res.status(200).json(funcionarios);
+    const quantidadeFuncionarios: number = await Funcionarios.count();
+    return res.status(200).json({quantidadeFuncionarios, funcionarios});
   }
 );
 
