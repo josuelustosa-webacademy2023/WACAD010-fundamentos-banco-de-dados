@@ -52,4 +52,16 @@ dependentesRouter.delete(
   }
 );
 
+dependentesRouter.get(
+  "/funcionarios/:id/dependentes",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+    const dependentes: Dependentes[] = await Dependentes.findAll({
+      where: { funcionarioId: id },
+    });
+
+    return res.status(200).json(dependentes);
+  }
+);
+
 export { dependentesRouter };
