@@ -1,8 +1,15 @@
 import express from "express";
 import { funcionariosRouter } from "./routes/Funcionarios.routes";
 import { departamentosRouter } from "./routes/Departamentos.routes";
+import { dependentesRouter } from "./routes/Dependentes.routes";
+import { projetosRouter } from "./routes/Projetos.routes";
 
-const routes = [funcionariosRouter, departamentosRouter];
+const routes = [
+  funcionariosRouter,
+  departamentosRouter,
+  dependentesRouter,
+  projetosRouter,
+];
 
 export class Api {
   public server: express.Application;

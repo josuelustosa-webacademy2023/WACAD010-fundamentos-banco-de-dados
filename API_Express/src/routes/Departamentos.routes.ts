@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 import { Departamentos } from "../models/Departamentos";
 
 const departamentosRouter: Router = Router();
+
 departamentosRouter.get(
   "/departamentos",
   async (req: Request, res: Response): Promise<Response> => {
