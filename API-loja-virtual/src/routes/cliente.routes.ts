@@ -23,4 +23,16 @@ clienteRouter.get(
   }
 );
 
+clienteRouter.get(
+  "/cliente/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const cliente: Cliente | null = await Cliente.findByPk(id);
+
+    if (cliente) return res.status(200).json(cliente);
+    else return res.status(404).json({ msg: "Cliente não existe." });
+  }
+);
+
 export { clienteRouter };
