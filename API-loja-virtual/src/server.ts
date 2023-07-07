@@ -2,14 +2,9 @@ import express from "express";
 import { produtoRouter } from "./routes/produto.routes";
 import { categoriaRouter } from "./routes/categoria.routes";
 import { clienteRouter } from "./routes/cliente.routes";
-//import { vendaRouter } from "./routes/venda.routes";
+import { vendaRouter } from "./routes/venda.routes";
 
-const routes = [
-  produtoRouter,
-  categoriaRouter,
-  clienteRouter,
-  //vendaRouter
-];
+const routes = [produtoRouter, categoriaRouter, clienteRouter, vendaRouter];
 
 export class Api {
   public server: express.Application;
