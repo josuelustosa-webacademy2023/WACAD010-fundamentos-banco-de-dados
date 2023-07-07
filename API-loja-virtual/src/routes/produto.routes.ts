@@ -66,4 +66,18 @@ produtoRouter.put(
   }
 );
 
+produtoRouter.delete(
+  "/produto/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const produtoCadastrado: Produto | null = await Produto.findByPk(id);
+
+    if (produtoCadastrado) {
+      await Produto.destroy({ where: { id } });
+      return res.status(200).json({ msg: "Produto excluído com sucesso!" });
+    } else return res.status(404).json({ msg: "Produto não existe." });
+  }
+);
+
 export { produtoRouter };
