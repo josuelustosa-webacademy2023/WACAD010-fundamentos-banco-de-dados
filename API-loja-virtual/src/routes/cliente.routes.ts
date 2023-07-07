@@ -49,4 +49,18 @@ clienteRouter.put(
   }
 );
 
+clienteRouter.delete(
+  "/cliente/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const cliente: Cliente | null = await Cliente.findByPk(id);
+
+    if (cliente) {
+      await Cliente.destroy({ where: { id } });
+      return res.status(200).json({ msg: "Cliente excluído(a) com sucesso!" });
+    } else return res.status(404).json({ msg: "Cliente não existe." });
+  }
+);
+
 export { clienteRouter };
