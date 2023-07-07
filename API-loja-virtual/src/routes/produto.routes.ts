@@ -4,6 +4,18 @@ import { Categoria } from "../models/Categoria";
 
 const produtoRouter: Router = Router();
 
+produtoRouter.get(
+  "/produto",
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      const produtos: Produto[] = await Produto.findAll();
+      res.status(200).json(produtos);
+    } catch (erro) {
+      res.status(404).json(erro);
+    }
+  }
+);
+
 produtoRouter.post(
   "/produto",
   async (req: Request, res: Response): Promise<Response> => {
