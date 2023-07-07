@@ -16,6 +16,18 @@ produtoRouter.get(
   }
 );
 
+produtoRouter.get(
+  "/produto/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const produto: Produto | null = await Produto.findByPk(id);
+
+    if (produto) return res.status(200).json(produto);
+    else return res.status(404).json({ msg: "Produto não existe" });
+  }
+);
+
 produtoRouter.post(
   "/produto",
   async (req: Request, res: Response): Promise<Response> => {
