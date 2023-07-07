@@ -35,4 +35,18 @@ clienteRouter.get(
   }
 );
 
+clienteRouter.put(
+  "/cliente/:id",
+  async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const cliente: Cliente | null = await Cliente.findByPk(id);
+
+    if (cliente) {
+      await Cliente.update({ ...req.body }, { where: { id } });
+      return res.status(200).json({ msg: "Cliente editado(a) com sucesso!" });
+    } else return res.status(404).json({ msg: "Cliente não existe." });
+  }
+);
+
 export { clienteRouter };
