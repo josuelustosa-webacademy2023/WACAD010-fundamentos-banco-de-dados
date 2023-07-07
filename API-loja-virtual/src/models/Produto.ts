@@ -3,7 +3,6 @@ import {
   Model,
   Column,
   DataType,
-  IsUUID,
   PrimaryKey,
   AllowNull,
   Unique,
@@ -17,7 +16,6 @@ import { Categoria } from "./Categoria";
   timestamps: true,
 })
 export class Produto extends Model {
-  @IsUUID("all")
   @PrimaryKey
   @Column({
     type: INTEGER,
