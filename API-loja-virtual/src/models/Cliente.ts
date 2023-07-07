@@ -23,7 +23,6 @@ export class Cliente extends Model {
   id!: number;
 
   @AllowNull(false)
-  @Unique
   @Column({
     type: DataType.STRING,
   })

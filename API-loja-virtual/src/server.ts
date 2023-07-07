@@ -1,13 +1,13 @@
 import express from "express";
 import { produtoRouter } from "./routes/produto.routes";
 import { categoriaRouter } from "./routes/categoria.routes";
-//import { clienteRouter } from "./routes/cliente.routes";
+import { clienteRouter } from "./routes/cliente.routes";
 //import { vendaRouter } from "./routes/venda.routes";
 
 const routes = [
   produtoRouter,
   categoriaRouter,
-  //clienteRouter,
+  clienteRouter,
   //vendaRouter
 ];
 

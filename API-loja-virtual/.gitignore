@@ -1,5 +1,4 @@
 node_modules
 dist
 src/db/config.ts
-src/routes/cliente.routes.ts
 src/routes/venda.routes.ts
