@@ -53,10 +53,10 @@ produtoRouter.put(
     const { id } = req.params;
     const { id_categoria } = req.body;
 
-    const produto: Produto | null = await Produto.findByPk(id);
+    const produtoCadastrado: Produto | null = await Produto.findByPk(id);
     const categoriaCadastrada = await Categoria.findByPk(id_categoria);
 
-    if (produto && categoriaCadastrada) {
+    if (produtoCadastrado && categoriaCadastrada) {
       await Produto.update({ ...req.body }, { where: { id } });
       return res.status(200).json({ msg: "Produto editado com sucesso!" });
     } else
